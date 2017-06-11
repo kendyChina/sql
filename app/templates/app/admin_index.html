@@ -1,0 +1,78 @@
+{% extends 'app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		{% block script %}
+		<script src="{% static 'app/admin_index.js' %}" type="text/javascript" charset="utf-8"></script>
+		{% endblock %}
+	</head>
+	<body>
+		{% block content %}
+		<section class="left">
+			<div>
+				<span class="add-book" onclick="showhide('.add-book')">添加图书</span>
+	        	<span class="book-list" onclick="showhide('.book-list')">现有图书</span>
+	        	<span class="borrow-list" onclick="showhide('.borrow-list')">借阅查询</span>
+			</div>
+		</section>
+		<section class="center-right">
+			<div class="add-book">
+				<form action="" method="post">
+	                {% csrf_token %}
+	                <div class="info"><label>{{ bookInfo.bname.label }}</label>{{ bookInfo.bname }}</div>
+	                <div class="info"><label>{{ bookInfo.bcount.label }}</label>{{ bookInfo.bcount }}</div>
+	                <div class="info"><label>{{ bookInfo.bposition.label }}</label>{{ bookInfo.bposition }}</div>
+	                <div class="info"><label>{{ bookInfo.btype.label }}</label>{{ bookInfo.btype }}</div>
+	                <div class="info"><label>{{ bookInfo.bintroduction.label }}</label>{{ bookInfo.bintroduction }}</div>
+	                <input type="submit" value="添加" class="button">
+	            </form>
+			</div>
+			<div class="book-list">
+				<table cellspacing="10">
+	                <tr>
+	                    <th>书名</th>
+	                    <th>类型</th>
+	                    <th>数量</th>
+	                </tr>
+	                {% if book_list %}
+	                    {% for b in book_list %}
+	                        <tr>
+	                            <td><a href="{% url 'app:admin_detail' b.id %}">{{ b.bname }}</a></td>
+	                            <td>{{ b.btype }}</td>
+	                            <td>{{ b.bcount}}</td>
+	                        </tr>
+	                    {% endfor %}
+	                {% endif %}
+	            </table>
+			</div>
+			<div class="borrow-list">
+				<table cellspacing="10">
+	                <tr>
+	                    <th>姓名</th>
+	                    <th>书名</th>
+	                    <th>类型</th>
+	                    <th>剩余数量</th>
+	                    <th>借阅日期</th>
+	                    <th>应还日期</th>
+	                </tr>
+	                {% if borrow %}
+	                    {% for b in borrow %}
+	                        <tr>
+	                            <td>{{ b.student.sname }}</td>
+	                            <td>{{ b.book.bname }}</td>
+	                            <td>{{ b.book.btype }}</td>
+	                            <td>{{ b.book.bcount }}</td>
+	                            <td>{{ b.borrow_time|date:"Y-m-d" }}</td>
+	                            <td>{{ b.should_return|date:"Y-m-d" }}</td>
+	                        </tr>
+	                    {% endfor %}
+	                {% endif %}
+	            </table>
+			</div>
+		</section>
+		{% endblock %}
+	</body>
+</html>

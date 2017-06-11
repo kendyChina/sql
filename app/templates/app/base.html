@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block headtitle %}图书管理系统{% endblock %}</title>
+		<script src="{% static 'app/jquery-3.2.1.js' %}" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'app/jquery-ui.css' %}"/>
+		<script src="{% static 'app/jquery-ui.js' %}" type="text/javascript" charset="utf-8"></script>
+		<script src="{% static 'app/base.js' %}" type="text/javascript" charset="utf-8"></script>
+		{% block script %}{% endblock %}
+	</head>
+	<body>
+		{% block head %}
+			<div class="head">
+		        <span class="title">{% block title %}Library{% endblock %}</span>
+		        {% if request.session.id %}
+	                Welcome:{{ request.session.name }}
+	                <a href="{% url 'app:logout' %}">[退出]</a>
+		        {% endif %}
+		        <span class="float-right">
+	                	作者：徐乐轩<br />
+	                	年级：14级2班<br />
+	                	学号：3114006397<br />
+	                	专业：网络工程<br />
+	                	学校：广东工业大学<br />
+	            </span>
+		    </div>
+	    {% endblock %}
+	    {% block content %}
+	    {% endblock %}
+	    <div class="clear"></div>
+	    {% block bottom %}
+	    	<div class="bottom">
+	    		<p>This is bottom.</p>
+	    	</div>
+	    {% endblock %}
+	</body>
+</html>

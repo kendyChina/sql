@@ -1,0 +1,49 @@
+{% extends "app/base.html" %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		{% block content %}
+	        <div class="left">
+	        	<div>
+	        		<span class="introdution">简介</span>
+		            {% if book.bintroduction %}
+	    			{{ book.bintroduction }}
+	    			{% endif %}
+	    			{% if not book.bintroduction %}
+	    			暂无简介。
+	    			{% endif %}
+	        	</div>
+	        </div>
+	        <div class="center-right">
+	            <table cellspacing="10">
+	                <tr>
+	                    <th>书名</th><td>{{ book.bname }}</td>
+	                </tr>
+	                <tr>
+	                    <th>剩余数量</th><td>{{ book.bcount }}</td>
+	                </tr>
+	                <tr>
+	                    <th>类型</th><td>{{ book.btype }}</td>
+	                </tr>
+	                <tr>
+	                    <th>位置</th><td>{{ book.bposition }}</td>
+	                </tr>
+	                <tr>
+	                    <td>
+	                        {% if not borrowed %}
+	                            {% if book.bcount > 0 %}
+	                                <a href="{% url 'app:delete' book.id %}" >Delete</a>
+	                            {% endif %}
+	                        {% endif %}
+	                    </td>
+	                    <td><a href="{% url 'app:admin_index' %}">Back</a></td>
+	                </tr>
+	            </table>
+	        </div>
+	    {% endblock %}
+	</body>
+</html>

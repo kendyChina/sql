@@ -1,0 +1,58 @@
+{% extends "app/base.html" %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	{% block content %}
+    <div class="left">
+    	<div>
+    		<span class="introdution">简介</span>
+    		<div class="content">
+    			{% if book.bintroduction %}
+    			{{ book.bintroduction }}
+    			{% endif %}
+    			{% if not book.bintroduction %}
+    			暂无简介。
+    			{% endif %}
+    		</div>
+    	</div>
+    </div>
+    <div class="center">
+        <table cellspacing="10">
+            <tr>
+                <th>书名</th><td>{{ book.bname }}</td>
+            </tr>
+            <tr>
+                <th>剩余数量</th><td>{{ book.bcount }}</td>
+            </tr>
+            <tr>
+                <th>类型</th><td>{{ book.btype }}</td>
+            </tr>
+            <tr>
+                <th>位置</th><td>{{ book.bposition }}</td>
+            </tr>
+            <tr>
+                <td>
+                    {% if not borrowed %}
+                        {% if book.bcount > 0 %}
+                            <!--<button class="button"><a href="{% url 'app:borrow' book.id %}" >Borrow</a></button>-->
+                            <button class="button" onclick="window.location.href='{% url 'app:borrow' book.id %}'">Borrow</button>
+                        {% else %}
+                        	<!--<button class="button"><a href="{% url 'app:borrow' book.id %}" >Borrow111</a></button>-->
+                        	<button class="button"  onclick="window.location.href='{% url 'app:borrow' book.id %}'">Borr11ow</button>
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td>
+                	<!--<button class="button"><a href="{% url 'app:student' %}">Back</a></button>-->
+                	<button class="button" onclick="window.location.href='{% url 'app:student' %}'">Back</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    {% endblock %}
+	</body>
+</html>

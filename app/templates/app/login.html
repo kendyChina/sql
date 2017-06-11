@@ -1,0 +1,22 @@
+{% extends "app/base.html" %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	{% block content %}
+	    <div class="body">
+	        <div class="login">
+	            <form action="{% url 'app:login' %}" method="post">
+	                {% csrf_token %}
+	                {{ loginInfo }}
+	                <input type="submit" value="登陆" class="button"/>
+	            </form>
+	            <button class="button" onclick="window.location.href ='{% url 'app:signup' %}'">注册</button>
+	        </div>
+	    </div>
+    {% endblock %}
+	</body>
+</html>

@@ -1,0 +1,74 @@
+{% extends "app/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		{% block script %}
+		<script src="{% static 'app/student.js' %}" type="text/javascript" charset="utf-8"></script>
+		{% endblock %}
+	</head>
+	<body>
+		{% block content %}
+		<section class="left">
+			<div>
+				<span class="book-list" onclick="showhide('.book-list')">书籍列表</span>
+            	<span class="has-borrow" onclick="showhide('.has-borrow')">已借书籍</span>
+            	<span class="accordion" onclick="showhide('.accordion')">我的记录</span>
+			</div>
+		</section>
+		<section class="center">
+			<div class="book-list">
+				<table cellspacing="10">
+	                <tr>
+	                    <th>书名</th>
+	                    <th>类型</th>
+	                </tr>
+	                {% if book_list %}
+	                    {% for b in book_list %}
+	                        <tr>
+	                            <td><a href="{% url 'app:detail' b.id %}">{{ b.bname }}</a></td>
+	                            <td>{{ b.btype }}</td>
+	                        </tr>
+	                    {% endfor %}
+	                {% endif %}
+	            </table>
+			</div>
+			<div class="has-borrow">
+				<table cellspacing="10">
+	                <tr>
+	                    <th>书名</th>
+	                    <th>类型</th>
+	                    <th>位置</th>
+	                    <th>借阅日期</th>
+	                    <th>应还日期</th>
+	                </tr>
+	                {% if has_borrow %}
+	                    {% for b in has_borrow %}
+	                        <tr>
+	                            <td>{{ b.book.bname }}</td>
+	                            <td>{{ b.book.btype }}</td>
+	                            <td>{{ b.book.bposition }}</td>
+	                            <td>{{ b.borrow_time|date:"Y-m-d" }}</td>
+	                            <td>{{ b.should_return|date:"Y-m-d" }}</td>
+	                            <td><a href="{% url 'app:return_book' b.book_id %}">return</a></td>
+	                        </tr>
+	                    {% endfor %}
+	                {% endif %}
+	            </table>
+			</div>
+			<div class="accordion"></div>
+		</section>
+		<section class="right">
+			<p>标题：</p>
+			<textarea rows="1" id="markTitle"></textarea>
+			<p>内容：</p>
+			<textarea rows="10" id="markContent"></textarea>
+			<button onclick="setMark()">记录</button>
+			<textarea rows="1" id="removeTitle" title="标题"></textarea>
+			<button onclick="removeMark()">移除</button>
+		</section>
+		{% endblock %}
+	</body>
+</html>

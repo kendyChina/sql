@@ -1,0 +1,39 @@
+li {list-style: none;}
+a {text-decoration: none;color: black;}
+a:visited {color: black;}
+a:hover {color: royalblue;}
+.head {overflow: hidden;background-color: lightblue;padding: 10px 0px;border-radius: 6px 6px 0px 0px;font-weight: bold;}
+.head a {color: darkviolet;}
+.head .title {float: left;font-size: 50px;position: relative;left: 43%;color: white;top: 10px;}
+.head .float-right {float: right;margin-right: 30px;}
+.button {border-radius: 4px;cursor: pointer;}
+.login {width: 150px;margin: 0px auto;}
+.login #radio {float: left;padding: 0px;margin: 0px;}
+.login .button {margin: 4px 6px;float: right;}
+.left {text-align: center;width: 30%;float: left;border-right: 4px solid lightblue;height: 450px;}
+.left div {margin: 10px 20px;}
+.left span {display: block;color: royalblue; cursor: pointer;border-bottom: 1px solid darkgray;padding: 10px 0px;}
+.left #accordion-wrap {overflow: hidden;}
+.left #accordion h5 {font-size: 20px;}
+.left .introdution {cursor: default;}
+.left .content {line-height: 30px;}
+.left .select {font-weight: bold;color: brown;}
+.center {float: left;width: 40%;border-right: 4px solid lightblue;height: 450px;}
+.center table {table-layout: fixed;margin: 0px auto;}
+.center .book-list th, td {width: 100px;white-space: nowrap;line-height: 25px;overflow: hidden;text-align: center;}
+.center .has-borrow a {color: royalblue;}
+.right {float: right;width: 28%;}
+.right p {text-align: center;}
+.right textarea {resize: none;width: 90%;margin-left: 5%;}
+.right button {position: relative;left: 42%;border-radius: 4px;margin-top: 4px;}
+.center-right select {border-radius: 4px;}
+.center-right .button {margin-left: 100px;}
+.info {margin: 10px;}
+.text {margin-bottom: 10px;border-radius: 4px;}
+.form {width: 300px;margin: 0px auto;}
+label {text-align-last: right;width: 100px;padding-right: 20px;float: left;}
+.sign {margin-bottom: 4px;}
+.sign-bottom {margin-left: 130px;}
+.clear {clear: both;height: 0px;margin: 0px;padding: 0px;}
+.bottom {width: 100%;background-color: lightblue;height: 30px;margin: 0px;padding: 0px;}
+.bottom p {color: white;text-align: center;}
