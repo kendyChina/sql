@@ -14,27 +14,27 @@
 	<body>
 		{% block head %}
 			<div class="head">
-		        <span class="title">{% block title %}Library{% endblock %}</span>
+		        <span class="title">{% block title %}LIBRARY{% endblock %}</span>
 		        {% if request.session.id %}
 	                Welcome:{{ request.session.name }}
 	                <a href="{% url 'app:logout' %}">[退出]</a>
 		        {% endif %}
-		        <span class="float-right">
+		        <!--<span class="float-right">
 	                	作者：徐乐轩<br />
 	                	年级：14级2班<br />
 	                	学号：3114006397<br />
 	                	专业：网络工程<br />
 	                	学校：广东工业大学<br />
-	            </span>
+	            </span>-->
 		    </div>
 	    {% endblock %}
 	    {% block content %}
 	    {% endblock %}
 	    <div class="clear"></div>
 	    {% block bottom %}
-	    	<div class="bottom">
+	    	<!--<div class="bottom">
 	    		<p>This is bottom.</p>
-	    	</div>
+	    	</div>-->
 	    {% endblock %}
 	</body>
 </html>
